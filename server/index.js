@@ -10,7 +10,6 @@ const app = express();
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        'https://hack-log-log-your-hackathon-journey-487eg6f2o.vercel.app',
         'https://hacklog.netlify.app'
     ],
     credentials: true

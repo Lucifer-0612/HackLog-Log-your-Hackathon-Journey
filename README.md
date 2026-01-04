@@ -1,6 +1,13 @@
 # HackLog - Hackathon Journey Logger
 
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://hacklog.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/hacklog/deploys)
+
 A full-stack application to track and analyze your hackathon performance, learn from failures, and improve execution.
+
+**🌐 Live Demo:** [https://hacklog.netlify.app](https://hacklog.netlify.app)
+
+---
 
 ## 🚀 Features
 
@@ -10,6 +17,8 @@ A full-stack application to track and analyze your hackathon performance, learn 
 - **Profile Management** - Track your tech stack and experience level
 - **Risk Assessment** - Identify your riskiest phases and categories
 
+---
+
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -17,17 +26,24 @@ A full-stack application to track and analyze your hackathon performance, learn 
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
 - **Recharts** - Data visualization
-- **Axios** - HTTP client
+- **Framer Motion** - Smooth animations
+- **Radix UI** - Accessible component primitives
 
 ### Backend
 - **Express.js** - Node.js web framework
 - **MongoDB** - NoSQL database
 - **Mongoose** - MongoDB ODM
 
-## 📦 Installation
+### Deployment
+- **Frontend:** Netlify (with Essential Next.js Plugin)
+- **Backend:** Render
+
+---
+
+## 📦 Local Development
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - MongoDB database (local or Atlas)
 - npm or yarn
 
@@ -39,21 +55,36 @@ A full-stack application to track and analyze your hackathon performance, learn 
    cd HackLog-Log-your-Hackathon-Journey
    ```
 
-2. **Setup Server**
+2. **Setup Backend**
    ```bash
    cd server
-   cp .env.example .env
-   # Edit .env and add your MongoDB connection string
    npm install
+   ```
+   
+   Create `.env` file:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   PORT=5000
+   ```
+   
+   Start the server:
+   ```bash
    npm run dev
    ```
 
-3. **Setup Client**
+3. **Setup Frontend**
    ```bash
    cd ../client
-   cp .env.example .env.local
-   # Edit .env.local if needed (default: http://localhost:5000)
    npm install
+   ```
+   
+   Create `.env.local` file (optional):
+   ```env
+   NEXT_PUBLIC_API_URL=http://localhost:5000
+   ```
+   
+   Start the development server:
+   ```bash
    npm run dev
    ```
 
@@ -61,38 +92,47 @@ A full-stack application to track and analyze your hackathon performance, learn 
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:5000
 
+---
+
 ## 🌐 Deployment
 
-### Frontend (Vercel)
-The frontend is deployed on Vercel with automatic deployments from the main branch.
+### Frontend (Netlify)
+The frontend is deployed on Netlify with automatic deployments from the master branch.
 
-### Backend
-Deploy the backend to Railway, Render, or any Node.js hosting platform.
+**Configuration:** See `netlify.toml` for build settings.
 
-## 📝 Environment Variables
+### Backend (Render)
+The backend is deployed on Render with automatic deployments.
 
-### Server (.env)
-```
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-```
+**Environment Variables Required:**
+- `MONGO_URI` - MongoDB connection string
+- `PORT` - Server port (default: 5000)
 
-### Client (.env.local)
-```
-NEXT_PUBLIC_API_URL=your_backend_api_url
-```
+---
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
 ## 📄 License
 
 This project is open source and available under the MIT License.
 
+---
+
 ## 👨‍💻 Author
 
-**Ashutosh Kesarwani** ([@Lucifer-0612](https://github.com/Lucifer-0612))
+**Ashutosh Kesarwani**
+- GitHub: [@Lucifer-0612](https://github.com/Lucifer-0612)
+- Project Link: [https://github.com/Lucifer-0612/HackLog-Log-your-Hackathon-Journey](https://github.com/Lucifer-0612/HackLog-Log-your-Hackathon-Journey)
 
 ---
 
