@@ -7,7 +7,13 @@ const profileRoutes = require("./routes/profile");
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'https://hack-log-log-your-hackathon-journey-487eg6f2o.vercel.app'
+    ],
+    credentials: true
+}));
 app.use(express.json());
 app.use("/api/hackathons", hackathonRoutes);
 app.use("/api/profile", profileRoutes);
