@@ -9,7 +9,8 @@ export default function BadgeGrid() {
 
     useEffect(() => {
         const fetchBadges = async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gamification/badges`);
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${apiUrl}/api/gamification/badges`);
             const data = await res.json();
             setBadges(data);
         };
@@ -36,8 +37,8 @@ export default function BadgeGrid() {
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${filter === cat
-                                    ? 'bg-yellow-600 text-white'
-                                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                                ? 'bg-yellow-600 text-white'
+                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                                 }`}
                         >
                             {cat}
@@ -56,8 +57,8 @@ export default function BadgeGrid() {
                         transition={{ delay: idx * 0.05 }}
                         whileHover={{ scale: badge.isUnlocked ? 1.05 : 1 }}
                         className={`group relative p-6 rounded-xl border flex flex-col items-center text-center transition-all cursor-pointer ${badge.isUnlocked
-                                ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-yellow-500/50 shadow-lg shadow-yellow-900/20'
-                                : 'bg-gray-950 border-gray-900 opacity-60'
+                            ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-yellow-500/50 shadow-lg shadow-yellow-900/20'
+                            : 'bg-gray-950 border-gray-900 opacity-60'
                             }`}
                     >
                         {/* Badge Icon */}
@@ -71,9 +72,9 @@ export default function BadgeGrid() {
 
                         {/* Category Tag */}
                         <div className={`text-xs px-2 py-1 rounded-full ${badge.category === 'Milestone' ? 'bg-blue-900/50 text-blue-300' :
-                                badge.category === 'Skill' ? 'bg-green-900/50 text-green-300' :
-                                    badge.category === 'Endurance' ? 'bg-red-900/50 text-red-300' :
-                                        'bg-orange-900/50 text-orange-300'
+                            badge.category === 'Skill' ? 'bg-green-900/50 text-green-300' :
+                                badge.category === 'Endurance' ? 'bg-red-900/50 text-red-300' :
+                                    'bg-orange-900/50 text-orange-300'
                             }`}>
                             {badge.category}
                         </div>

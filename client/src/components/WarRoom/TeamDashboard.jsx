@@ -15,7 +15,8 @@ export default function TeamDashboard({ hackathonId }) {
 
     const fetchTeam = async () => {
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gamification/teams/${hackathonId}`);
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${apiUrl}/api/gamification/teams/${hackathonId}`);
             const data = await res.json();
             if (Array.isArray(data) && data.length > 0) {
                 setTeam(data[0]);
@@ -39,7 +40,8 @@ export default function TeamDashboard({ hackathonId }) {
         const nextStatus = statuses[(currentIndex + 1) % statuses.length];
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gamification/teams/${team._id}/members/${memberId}`, {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${apiUrl}/api/gamification/teams/${team._id}/members/${memberId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: nextStatus })
@@ -58,7 +60,8 @@ export default function TeamDashboard({ hackathonId }) {
 
         const updatedTasks = [...(team.tasks || []), { title: newTask, status: 'todo' }];
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gamification/teams/${team._id}/tasks`, {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${apiUrl}/api/gamification/teams/${team._id}/tasks`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ tasks: updatedTasks })
@@ -77,7 +80,8 @@ export default function TeamDashboard({ hackathonId }) {
     const panicMode = async () => {
         const updatedMembers = team.members.map(m => ({ ...m, status: 'Panic' }));
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gamification/teams/${team._id}`, {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            const res = await fetch(`${apiUrl}/api/gamification/teams/${team._id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ members: updatedMembers })
@@ -161,10 +165,10 @@ export default function TeamDashboard({ hackathonId }) {
                                     </div>
                                 </div>
                                 <div className={`px-3 py-1 rounded-full text-sm font-bold transition-all ${member.status === 'Panic' ? 'bg-red-900 text-red-200 animate-bounce' :
-                                        member.status === 'Coding' ? 'bg-green-900 text-green-200' :
-                                            member.status === 'Debugging' ? 'bg-yellow-900 text-yellow-200' :
-                                                member.status === 'Designing' ? 'bg-blue-900 text-blue-200' :
-                                                    'bg-gray-800 text-gray-400'
+                                    member.status === 'Coding' ? 'bg-green-900 text-green-200' :
+                                        member.status === 'Debugging' ? 'bg-yellow-900 text-yellow-200' :
+                                            member.status === 'Designing' ? 'bg-blue-900 text-blue-200' :
+                                                'bg-gray-800 text-gray-400'
                                     }`}>
                                     {member.status}
                                 </div>
