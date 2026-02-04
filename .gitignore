@@ -26,3 +26,5 @@ dist/
 build/
 .next/
 out/
+.agent
+

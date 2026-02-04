@@ -17,6 +17,7 @@ app.use(cors({
 app.use(express.json());
 app.use("/api/hackathons", hackathonRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/gamification", require("./routes/gamification"));
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ MongoDB connected successfully"))

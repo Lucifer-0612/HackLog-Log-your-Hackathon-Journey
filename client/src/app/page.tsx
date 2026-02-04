@@ -294,6 +294,20 @@ export default function DashboardPage() {
               Dashboard
             </Link>
             <Link
+              href="/hall-of-glory"
+              className="text-xs font-mono text-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-1"
+            >
+              <span>🏆</span> Hall of Glory
+            </Link>
+            {hackathon && (
+              <Link
+                href={`/war-room/${hackathon._id}`}
+                className="text-xs font-mono text-red-500 hover:text-red-400 transition-colors flex items-center gap-1"
+              >
+                <span>⚔️</span> War Room
+              </Link>
+            )}
+            <Link
               href="/profile"
               className="text-xs font-mono text-zinc-500 hover:text-zinc-300 transition-colors"
             >
