@@ -77,6 +77,16 @@ export function HackathonOverview({ hackathon, onEdit, onDelete }: HackathonOver
           </span>
         </div>
       </div>
+
+      <div className="mt-4 pt-4 border-t border-zinc-800">
+        <a
+          href={`/war-room/${hackathon._id}`}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white text-sm font-bold rounded-lg transition-all"
+        >
+          <span>⚔️</span>
+          Enter War Room
+        </a>
+      </div>
     </div>
   );
 }
